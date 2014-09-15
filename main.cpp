@@ -8,12 +8,15 @@
 #include <queue>
 #include <vector>
 #include <time.h>
+#include <ctime>
+#include <stdlib.h>
 
 #include "headers/d_except.h"
 #include "headers/d_matrix.h"
 #include "headers/graph.h"
 #include "headers/knapsack.h"
 
+void exhaustiveColoring(graph &g, int numColors, int time);
 
 using namespace std;
 
@@ -29,10 +32,10 @@ int main()
     // Read the name of the graph from the keyboard or
     // hard code it here for testing.
 
-    // fileName = "color12-4.input";
+     fileName = "color/color12-4.input";
 
-    cout << "Enter filename" << endl;
-    cin >> fileName;
+//    cout << "Enter filename" << endl;
+//    cin >> fileName;
 
     fin.open(fileName.c_str());
     if (!fin)
@@ -65,3 +68,18 @@ int main()
     }
 }
 
+void exhaustiveColoring(graph &g, int numColors, int time)
+// Exhaustive algorithm that finds minimum number of conflicts for a numColors coloring of graph g
+// Stops running after time seconds if conflicts still exist
+{
+
+    // use weights to represent colors
+
+    // use the same algorithm as the normal approach for knapsack, ie a number of base numColors and increment by one
+    // for each possibility
+
+    // after each iteration, check the number of conflicts and save the graph if it is less than the best
+
+    
+
+}
