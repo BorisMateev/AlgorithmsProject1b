@@ -10,6 +10,8 @@
 #include <time.h>
 #include <ctime>
 #include <stdlib.h>
+#include <string>
+#include <sstream>
 
 #include "headers/d_except.h"
 #include "headers/d_matrix.h"
@@ -17,6 +19,7 @@
 #include "headers/knapsack.h"
 
 void exhaustiveColoring(graph &g, int numColors, int time);
+long convertBase(int n, int base);
 
 using namespace std;
 
@@ -56,7 +59,10 @@ int main()
         cout << g;
 
         exhaustiveColoring(g, numColors, 60);
-        g.printSolution();
+
+        cout<< convertBase(100, 4);
+
+       // g.printSolution();
     }
     catch (indexRangeError &ex)
     {
@@ -80,6 +86,25 @@ void exhaustiveColoring(graph &g, int numColors, int time)
 
     // after each iteration, check the number of conflicts and save the graph if it is less than the best
 
-    
 
+
+}
+
+long convertBase(int n, int base)
+// Convert from base 10 to any other base
+{
+    string converting = ""; // Will add digits onto this string to construct the base x number
+    long final = 0; // Final base x number
+    int descending = n; // Temporary variable that is used to calculate the new number
+    int tempToString; // Transfer the next digit into the string converting
+
+    while(descending > 0)
+    {
+        int tempToString = descending%base;
+        converting = std::to_string(tempToString) + converting;
+        descending = descending/base;
+    }
+
+    final = atol(converting);
+    return final;
 }
